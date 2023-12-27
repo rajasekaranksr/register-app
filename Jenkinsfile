@@ -28,7 +28,13 @@ pipeline {
            steps {
                  sh "mvn test"
            }
-       }
+       }       stage("Quality Gate"){
+           steps {
+               script {
+                    waitForQualityGate abortPipeline: false, credentialsId: 'jenkins-sonarqube-token'
+                }	
+            }
+        }
        stage("SonarQube Analysis"){
            steps {
 	           script {
@@ -36,7 +42,8 @@ pipeline {
                         sh "mvn sonar:sonar"
 		        }
 	           }	
-       }
+	     }
+        }
+
     }
-  }
 }
