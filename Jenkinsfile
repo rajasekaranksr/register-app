@@ -10,7 +10,7 @@ pipeline {
             DOCKER_USER = "dockerraja2"
             DOCKER_PASS = 'dockerhub'
             IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
-            IMAGE_TAG = "${RELEASE}
+            IMAGE_TAG = "${RELEASE}"
 
     }
     stages{
